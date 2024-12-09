@@ -296,7 +296,10 @@ class GoogleTranslator(BaseTranslator):
         explains = []
         if obj[1]:
             for x in obj[1]:
-                expl = "[{}] ".format(x[0][0])
+                try:
+                    expl = "[{}] ".format(x[0])
+                except IndexError:
+                    expl = "[ ]"
                 for i in x[2]:
                     expl += i[0] + ";"
                 explains.append(expl)
